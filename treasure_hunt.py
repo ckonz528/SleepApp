@@ -12,7 +12,6 @@ def getChests(numChests, width, height):
         newChest = [r.randint(0, width), r.randint(0, height)]
         if newChest not in chests:
             chests.append(newChest)
-    print(chests)
     return(chests)
 
 def getMove(previous_moves, width, height):
@@ -60,15 +59,16 @@ def makeMove(game, chests, x, y):
         print('You found a treasure chest!!!')
         chests.remove([x, y]) # remove found chest from list
         game.board[y][x] = 'C'
+        return('Chest')
     else:
         if smallest_dist < 10: 
             game.board[y][x] = str(smallest_dist)
             print(f'Treasure detected {smallest_dist} paces from the detector.')
-            return('Chest')
+            return False
         else:
             game.board[y][x] = 'X'
             print('The detector did not find anything. All chests must be out of range')
-            return('Miss')
+            return False
 
 def playTreasureHunt():
     print('Welcome to Treasure Hunt!\n')
