@@ -3,6 +3,7 @@ import random as r
 class GameBoard():
 
     def __init__(self):
+        """Initialize the game board"""
         self.width = 22 
         self.height = 10
         self.board = []
@@ -14,26 +15,23 @@ class GameBoard():
                 self.board[y].append(r.choice(['~', '`', '*', '.']))
     
     def displayBoard(self):
+        """function to display the current state of the game board"""
         # construct tens line for grid labels
-        tensLine = '   '
+        tensLine = '     '
         for i in range(self.width // 10):
-            tensLine += ('_ ' * 9) + str(i + 1) + ' '
+            tensLine += ('  ' * 9) + str(i + 1) + ' '
         
         # construct ones line for grid labels
-        onesLine = '   ' + ('1 2 3 4 5 6 7 8 9 0 ' * (self.width // 10))
+        onesLine = '   ' + ('0 1 2 3 4 5 6 7 8 9 ' * (self.width // 10))
         for i in range(self.width % 10):
-            onesLine += str(i + 1) + ' '
+            onesLine += str(i) + ' '
         
         # display game board with grid labels
         print(tensLine)
         print(onesLine)
 
         for row in range(self.height):
-            print(f'{row + 1:2d} {" ".join(self.board[row])} {row + 1:2d}')
+            print(f'{row:2d} {" ".join(self.board[row])} {row:<2d}')
 
         print(onesLine)
         print(tensLine)
-        
-
-test = GameBoard()
-test.displayBoard()
