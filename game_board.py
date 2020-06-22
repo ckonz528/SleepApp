@@ -4,7 +4,7 @@ class GameBoard():
 
     def __init__(self):
         """Initialize the game board"""
-        self.width = 22 
+        self.width = 31 
         self.height = 10
         self.board = []
 
